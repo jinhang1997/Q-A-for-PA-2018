@@ -27,7 +27,8 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 warning: Error disabling address space randomization: Operation not permited
 ```
 可能是由于 docker 默认开启了 ASLR(Address space layout randomization) 。
-我的解决方法是重新配置容器，在`create`选项中加入`--privileged`参数即可。
+我的解决方法是重新配置容器，在执行`create`命令时加入`--privileged`参数即可。
+另外，PA 实验并没有必要使用 gdb 。
 
 26.`PA`是`组成原理课程设计`，是独立于组成原理课的单独的一门课，1个学分，挂了没有补考，按目前行情重修100元；组成原理实验0.5个学分，同样挂了没补考，重修50元，如果内容和去年相同的话那就是ICS Lab的前两个实验，这个具体后面老师会布置的，现在暂时不用管
 
