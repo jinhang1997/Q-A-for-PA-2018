@@ -18,24 +18,7 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 
 ## 最后更新日期：2018.3.1
 
-# PA2(预更新，请不要惊慌失措)
-
-* 2018.3.1更新:
-
-1. 遇到问题:
-```bash
-make ARCH=x86-nemu ALL=dummy run
-Building am [x86-nemu]
-make[2] *** No targets specified and no makefile found
-...
-```
-如果遇到，检查`~/.bashrc`目录，是否存在
-```bash
-export NEMU_HOME=/home/your name/ics2017/nemu
-export AM_HOME=/home/your name/ics2017/nexus-am
-export NAVY_HOME=/home/your name/ics2017/navy-apps
-```
-三个变量
+* （PA2有预更新部分，领先当前进度过多，可暂时不用关心，需要看请翻到本文末尾）
 
 # PA1
 
@@ -80,7 +63,8 @@ PA1的问答预计从`3月4日开始更新`，直接提问建议在`3月3日再�
 warning: Error disabling address space randomization: Operation not permited
 ```
 可能是由于 docker 默认开启了 ASLR(Address space layout randomization) 。
-我的解决方法是重新配置容器，在`create`选项中加入`--privileged`参数即可。
+我的解决方法是重新配置容器，在执行`create`命令时加入`--privileged`参数即可。
+另外，PA 实验并没有必要使用 gdb 。
 
 26.`PA`是`组成原理课程设计`，是独立于组成原理课的单独的一门课，1个学分，挂了没有补考，按目前行情重修100元；组成原理实验0.5个学分，同样挂了没补考，重修50元，如果内容和去年相同的话那就是ICS Lab的前两个实验，这个具体后面老师会布置的，现在暂时不用管
 
@@ -165,3 +149,24 @@ docker build -t和docker built -d
 半角字符和全角字符（多半是输入法造成的）
 （持续更新中...）
 ```
+
+# PA2(预更新，请不要惊慌失措)
+
+* 2018.3.1更新:
+
+2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+
+1. 遇到问题:
+```bash
+make ARCH=x86-nemu ALL=dummy run
+Building am [x86-nemu]
+make[2] *** No targets specified and no makefile found
+...
+```
+如果遇到，检查`~/.bashrc`目录，是否存在
+```bash
+export NEMU_HOME=/home/your name/ics2017/nemu
+export AM_HOME=/home/your name/ics2017/nexus-am
+export NAVY_HOME=/home/your name/ics2017/navy-apps
+```
+三个变量
