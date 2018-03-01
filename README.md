@@ -154,19 +154,29 @@ docker build -t和docker built -d
 
 * 2018.3.1更新:
 
-2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+2. 如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
 
 1. 遇到问题:
-```bash
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+Makefile:1:  /Makefile.check: No such file or directory.
+```
+你可以先试着添加环境变量：
+``` bash
+export AM_HOME=/home/your name/ics2017/nexus-am
+```
+然后你再跑一次，发现会出现：
+``` bash
 make ARCH=x86-nemu ALL=dummy run
 Building am [x86-nemu]
 make[2] *** No targets specified and no makefile found
 ...
 ```
 如果遇到，检查`~/.bashrc`目录，是否存在
-```bash
+``` bash
 export NEMU_HOME=/home/your name/ics2017/nemu
 export AM_HOME=/home/your name/ics2017/nexus-am
 export NAVY_HOME=/home/your name/ics2017/navy-apps
 ```
 三个变量
+这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要在修改环境了。
