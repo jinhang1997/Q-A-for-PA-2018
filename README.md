@@ -18,6 +18,25 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 
 ## 最后更新日期：2018.3.1
 
+# PA2(预更新，请不要惊慌失措)
+
+* 2018.3.1更新:
+
+1. 遇到问题:
+```bash
+make ARCH=x86-nemu ALL=dummy run
+Building am [x86-nemu]
+make[2] *** No targets specified and no makefile found
+...
+```
+如果遇到，检查`~/.bashrc`目录，是否存在
+```bash
+export NEMU_HOME=/home/your name/ics2017/nemu
+export AM_HOME=/home/your name/ics2017/nexus-am
+export NAVY_HOME=/home/your name/ics2017/navy-apps
+```
+三个变量
+
 # PA1
 
 PA1的问答预计从`3月4日开始更新`，直接提问建议在`3月3日再开始问`，提前拉进度的同学遇到问题先只有自己解决下
