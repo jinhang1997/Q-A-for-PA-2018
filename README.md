@@ -154,11 +154,11 @@ docker build -t和docker built -d
 
 * 2018.3.1更新:
 
-3 .神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
+3. 神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
 
-2 .如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+2. 如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
 
-1 .遇到问题:
+1. 遇到问题:
 ``` bash
 make ARCH=x86-nemu ALL=dummy run
 Makefile:1:  /Makefile.check: No such file or directory.
@@ -181,4 +181,4 @@ export AM_HOME=/home/your name/ics2017/nexus-am
 export NAVY_HOME=/home/your name/ics2017/navy-apps
 ```
 三个变量
-这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要在修改环境了。
+这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要再修改环境了。
