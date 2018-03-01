@@ -18,9 +18,7 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 
 ## 最后更新日期：2018.3.1
 
-# PA2
-
-1.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+* （PA2有预更新部分，领先当前进度过多，可暂时不用关心，需要看请翻到本文末尾）
 
 # PA1
 
@@ -151,3 +149,24 @@ docker build -t和docker built -d
 半角字符和全角字符（多半是输入法造成的）
 （持续更新中...）
 ```
+
+# PA2(预更新，请不要惊慌失措)
+
+* 2018.3.1更新:
+
+2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+
+1. 遇到问题:
+```bash
+make ARCH=x86-nemu ALL=dummy run
+Building am [x86-nemu]
+make[2] *** No targets specified and no makefile found
+...
+```
+如果遇到，检查`~/.bashrc`目录，是否存在
+```bash
+export NEMU_HOME=/home/your name/ics2017/nemu
+export AM_HOME=/home/your name/ics2017/nexus-am
+export NAVY_HOME=/home/your name/ics2017/navy-apps
+```
+三个变量
