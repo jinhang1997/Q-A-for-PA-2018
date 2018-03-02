@@ -59,7 +59,7 @@ PA1的问答预计从`3月4日开始更新`，直接提问建议在`3月3日再�
 * 2018.2.27更新：
 
 27.如果遇到`gdb`出现问题：
-```bash
+``` bash
 warning: Error disabling address space randomization: Operation not permited
 ```
 可能是由于 docker 默认开启了 ASLR(Address space layout randomization) 。
@@ -130,7 +130,7 @@ iface eth1 inet dhcp #设置eth1从DHCP处获得IP
 鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：http://hub-mirror.c.163.com。
 新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。
 请在该配置文件中加入（没有该文件的话，请先建一个）：
-```json
+``` json
 {
   "registry-mirrors": ["http://hub-mirror.c.163.com"]
 }
@@ -154,19 +154,31 @@ docker build -t和docker built -d
 
 * 2018.3.1更新:
 
+3.神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
+
 2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
 
-1. 遇到问题:
-```bash
+1.遇到问题:
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+Makefile:1:  /Makefile.check: No such file or directory.
+```
+你可以先试着添加环境变量：
+``` bash
+export AM_HOME=/home/your name/ics2017/nexus-am
+```
+然后你再跑一次，发现会出现：
+``` bash
 make ARCH=x86-nemu ALL=dummy run
 Building am [x86-nemu]
 make[2] *** No targets specified and no makefile found
 ...
 ```
 如果遇到，检查`~/.bashrc`目录，是否存在
-```bash
+``` bash
 export NEMU_HOME=/home/your name/ics2017/nemu
 export AM_HOME=/home/your name/ics2017/nexus-am
 export NAVY_HOME=/home/your name/ics2017/navy-apps
 ```
 三个变量
+这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要再修改环境了。
