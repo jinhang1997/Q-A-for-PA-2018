@@ -248,6 +248,27 @@ docker build -t和docker built -d
 
 # PA2(预更新，请不要惊慌失措)
 
+* 2018.3.29更新：
+
+4.在执行命令：
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+```
+时遇到找不到头文件`<bits/libc-header-start.h>`或其他头文件错误时，多半是没有安装软件包`g++-multilib`，请使用命令
+``` bash
+apt-get install g++-multilib
+```
+来安装，另，之前有部分虚拟机同学按照老版讲义在做，这里有一个遗留问题，那就是**安装的组件是老版PA的组件，新版的PA组件没有安装，请参考讲义PDF第16页**，确认自己安装了如下软件包：
+``` bash
+apt-get install build-essential
+apt-get install gdb
+apt-get install git
+apt-get install libreadline-dev
+apt-get install libsdl2-dev
+### 以上几个相信经过了PA0和PA1就算没装的也都补上了，那么下面这个记得装一下 ###
+apt-get install qemu-system-x86  # QEMU
+```
+
 * 2018.3.1更新:
 
 3.神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
