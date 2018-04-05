@@ -14,9 +14,61 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 
 5.为了鼓励大家提前做，以及分散提问人流，我们采取这个策略：本次报告`截止时间前24小时内`，仅在`14:00-16:00`，`22:00-23:59`集中回复两次；截止时间24小时之前，随问随答（当然是看到了消息的时候，如果逢在上课只有抱歉了……）。请留意。
 
-## 最后更新日期：2018.3.28
+## 最后更新日期：2018.4.5
 
-* （PA2有预更新部分，领先当前进度过多，可暂时不用关心，需要看请翻到本文末尾）
+# PA2
+
+* 2018.3.29更新：
+
+4.在执行命令：
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+```
+时遇到找不到头文件`<bits/libc-header-start.h>`或其他头文件错误时，多半是没有安装软件包`g++-multilib`，请使用命令
+``` bash
+apt-get install g++-multilib
+```
+来安装，另，之前有部分虚拟机同学按照老版讲义在做，这里有一个遗留问题，那就是**安装的组件是老版PA的组件，新版的PA组件没有安装，请参考讲义PDF第16页**，确认自己安装了如下软件包：
+``` bash
+apt-get install build-essential
+apt-get install gdb
+apt-get install git
+apt-get install libreadline-dev
+apt-get install libsdl2-dev
+### 以上几个相信经过了PA0和PA1就算没装的也都补上了，那么下面这个记得装一下 ###
+apt-get install qemu-system-x86  # QEMU
+```
+
+* 2018.3.1更新:
+
+3.神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
+
+2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
+
+1.遇到问题:
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+Makefile:1:  /Makefile.check: No such file or directory.
+```
+你可以先试着添加环境变量：
+``` bash
+export AM_HOME=/home/your name/ics2017/nexus-am
+```
+然后你再跑一次，发现会出现：
+``` bash
+make ARCH=x86-nemu ALL=dummy run
+Building am [x86-nemu]
+make[2] *** No targets specified and no makefile found
+...
+```
+如果遇到，检查`~/.bashrc`目录，是否存在
+``` bash
+export NEMU_HOME=/home/your name/ics2017/nemu
+export AM_HOME=/home/your name/ics2017/nexus-am
+export NAVY_HOME=/home/your name/ics2017/navy-apps
+```
+三个变量
+这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要再修改环境了。
 
 # PA1
 
@@ -245,57 +297,3 @@ docker build -t和docker built -d
 半角字符和全角字符（多半是输入法造成的）
 （持续更新中...）
 ```
-
-# PA2(预更新，请不要惊慌失措)
-
-* 2018.3.29更新：
-
-4.在执行命令：
-``` bash
-make ARCH=x86-nemu ALL=dummy run
-```
-时遇到找不到头文件`<bits/libc-header-start.h>`或其他头文件错误时，多半是没有安装软件包`g++-multilib`，请使用命令
-``` bash
-apt-get install g++-multilib
-```
-来安装，另，之前有部分虚拟机同学按照老版讲义在做，这里有一个遗留问题，那就是**安装的组件是老版PA的组件，新版的PA组件没有安装，请参考讲义PDF第16页**，确认自己安装了如下软件包：
-``` bash
-apt-get install build-essential
-apt-get install gdb
-apt-get install git
-apt-get install libreadline-dev
-apt-get install libsdl2-dev
-### 以上几个相信经过了PA0和PA1就算没装的也都补上了，那么下面这个记得装一下 ###
-apt-get install qemu-system-x86  # QEMU
-```
-
-* 2018.3.1更新:
-
-3.神奇的一点，GitHub 上添加代码名称时需要在 ` ``` ` 后添加空格，否则不会显示代码高亮。不过现在流行的桌面编辑器貌似都不添加空格。
-
-2.如果遇到找不到`sys/cdefs.h`的问题，可以通过安装`gcc-multilib`包解决。
-
-1.遇到问题:
-``` bash
-make ARCH=x86-nemu ALL=dummy run
-Makefile:1:  /Makefile.check: No such file or directory.
-```
-你可以先试着添加环境变量：
-``` bash
-export AM_HOME=/home/your name/ics2017/nexus-am
-```
-然后你再跑一次，发现会出现：
-``` bash
-make ARCH=x86-nemu ALL=dummy run
-Building am [x86-nemu]
-make[2] *** No targets specified and no makefile found
-...
-```
-如果遇到，检查`~/.bashrc`目录，是否存在
-``` bash
-export NEMU_HOME=/home/your name/ics2017/nemu
-export AM_HOME=/home/your name/ics2017/nexus-am
-export NAVY_HOME=/home/your name/ics2017/navy-apps
-```
-三个变量
-这个问题出现的原因可能是修改了环境（我是把 bash 改成了 zsh）。所以尽量在 PA0 之后就不要再修改环境了。
