@@ -180,14 +180,21 @@ cat dummy.txt
 
 ### 最后来看看运行dummy要写的6个指令
 以此为例，PA2.2的时候不再每个指令举例说明
-> CALL：讲义上说的很清楚
-PUSH POP：刚刚演示过了
-SUB：参考框架中写好的make_EHelper(sbb)，但是我们的SUB不需要减CF就行了
-XOR：调用rtl_xor进行异或运算，运算结果写操作数，更新ZF SF CF OF，然后调用模板打印汇编代码
-RET：调用rtl_li读一个立即数，然后用rtl_push压栈，然后设置跳转：
-``` c
-decoding.is_jmp = 1;
-```
+> CALL：读取要压栈的eip值（该eip值为CALL的下一条指令的首地址，提示：该eip值存储在decoding的某个域中），然后用rtl_push压栈，然后设置跳转：
+>
+> ``` c
+> decoding.is_jmp = 1;
+> ```
+> 
+> PUSH POP：刚刚演示过了
+> 
+> SUB：参考框架中写好的make_EHelper(sbb)，但是我们的SUB不需要减CF就行了
+> 
+> XOR：调用rtl_xor进行异或运算，运算结果写操作数，更新ZF SF CF OF，然后调用模板打印汇编代码
+> 
+> RET：调用rtl_pop从栈顶弹出一个4字节数据（其实就是保存的eip值），然后设置跳转点为弹出的eip值，并设置跳转。
+
+
 
 	
 	
