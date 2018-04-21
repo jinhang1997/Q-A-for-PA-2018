@@ -36,3 +36,38 @@ docker build -t和docker built -d
 7.开始做PA0以后**不要去瞎搞电脑**（包括重装系统，升级系统，装某某驱动，重装docker或者虚拟机什么的），这个搞坏了**只有从头做**，除非自己网上找代码仓库（比如`码云`，`github`，`coding`这些）存代码，这种情况也要重做PA0，所以这一个学期，电脑坏了只要还能将就用能做PA，就不要修电脑，期末结束了再修，否则影响了进度问题很严重
 
 8.重修同学，如果不想重新搭建docker环境，可以将就沿用去年的`虚拟机环境`（前提当然是你没删），但是请把去年的ics目录删掉（不删也罢，但是别搞错了哪个是哪个），2018和2017的PA用的代码框架不同（这个对比下讲义就显而易见了），因此去年不管做到哪挂的。。代码几乎没用了。。
+
+#	PA 2.1
+
+重装了系统，今天重新弄pa的时候刚好碰到了大家的问题，就是在`cputest`下运行
+
+```bash
+make ARCH=x86-nemu ALL=dummy run
+```
+
+的时候报错
+
+```bash
+Makefile.checkout:No such file or directory
+make : *** No rule to make target '/home/xxx/ics2017/nexus-am/Makefile.check'. Stop
+```
+
+这个其实主要去看看`Makefile`就大概知道什么错了，主要就是`AM_HOME`环境变量没找到
+
+有很多同学init到现在都不重启，导致bash没把环境变量引进。或者用zsh，init的时候默认是写到`.bashrc`，`.zshrc`就不会有相关的环境变量，而zsh每次启动都是加载的是`.zshrc`，这就导致了变量缺失的问题
+
+所以如果是zsh，就在用户目录下修改`.zshrc`，在文件末尾添加如下内容：(没有'#'号,xxx为你的用户名)
+
+```Bash
+export NEMUHOME=/home/xxx/ics2017/nemu
+export AM_HOME=/home/xxx/ics2017/nexus-am
+export NAVY_HOME=/home/xxx/ics2017/navy-apps
+```
+
+然后重启容器
+
+```Bash
+>	docker restart xxx(你的容器名称)
+```
+
+如果用的是bash的话，确保`.bashrc`有那三条内容直接重启就好了
