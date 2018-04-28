@@ -21,6 +21,14 @@ PA2018常见问题解答（持续更新，更新频率1-2天/次），欢迎star
 请务必看`讲义PDF中第204页`的`i386手册勘误`部分，否则**实现指令出错将对后面的进程产生巨大负面影响，甚至导致无法继续往后做**，请务必留意！另外，有部分勘误是**直接**在`i386手册的PDF文件中`用`批注`形式标注出来的，**若你的PDF阅读器并不能看到这些*标记和批注*，请使用以下推荐的PDF阅读器**：[Adobe Reader](https://adobe-reader.en.softonic.com/)或[Adobe Acrobat](https://get.adobe.com/cn/reader/otherversions/)
 
 # PA2
+* 2018.4.24更新
+
+15.如果在跑coremark的时候遇到了
+``` bash
+[0]ERROR! list crc 0x**** - should be 0xe714
+```
+这个问题是不能通过与 qemu 的对比找到的。
+请检查之前 `push` 指令的 decode 实现。(其实最终原因还是我太菜，开始的时候没实现对)
 
 * 2018.4.22更新：
 
